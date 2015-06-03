@@ -4,6 +4,8 @@ library(shiny)
 library(Gviz)
 library(Homo.sapiens)
 
+
+
 # Define server logic required to display gene models
 shinyServer(function(input, output) {
 
@@ -15,6 +17,14 @@ shinyServer(function(input, output) {
   #  2) Its output type is a plot
 
   output$tracksPlot <- renderPlot({
+
+      model <- models[sym2txname[["ADPRH"]]]
+      y <- unlist(model)
+      y$group  = rep(letters[seq_along(model)], elementLengths(model))
+      model <- relist(y, model)
+      track <- AnnotationTrack(model, feature="exon")
+      plotTracks(track)
+
     ## extract the relevant gene model, from input$symbol
 
     ## query input$bam files for coverage
