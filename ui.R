@@ -1,4 +1,5 @@
 library(shiny)
+library(Homo.sapiens)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -9,12 +10,15 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      ## sliderInput("bins", "Number of bins:",
-      ##             min = 1, max = 50, value = 30)
+       sliderInput("bins", "Width of bin:",
+                   min = 1, max = 10000, value = 30),
 
       ## input gene symbol (fancy: select from available)
+       selectInput("symbol", "Gene Symbol", choices = keys(Homo.sapiens, keytype='SYMBOL')),
+
 
       ## input paths to local BAM files
+       textInput("bam", "Bam Files")
     ),
 
     # Show a plot of the generated distribution
