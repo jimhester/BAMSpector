@@ -1,6 +1,9 @@
 # BAMSpector
 A lightweight shiny application to visualize gene models and supporting reads.
 
+`shiny::runApp()` when in the root directory should launch the current
+version of the app.
+
 The goal is to produce a shiny application that allows the user to
 specify a gene symbol and BAM file(s), and be rewarded with a
 visualization displaying the gene model (exons organized into
